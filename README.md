@@ -1,4 +1,4 @@
-# viora
+# Viora
 
 Viora is a versatile Python CLI for leveraging multiple AI providers like OpenAI, Ollama, Anthropic (Claude), and more. It’s designed for developers and creators who want to integrate AI into their workflows, pipelines, or automation, without being limited to “chatting” with AI.
 
