@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tasklin"
-version = "0.0.1"
+version = "0.0.2"
 description = "A single CLI to connect with OpenAI, Ollama, and more AI providers."
 readme = "README.md"
 license = { file = "LICENSE" }
