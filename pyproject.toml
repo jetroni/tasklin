@@ -3,11 +3,11 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Viora"
+name = "Tasklin"
 version = "0.0.1"
-description = "A unified CLI for AI providers like OpenAI, Ollama and more"
+description = "A single CLI to connect with OpenAI, Ollama, and more AI providers."
 readme = "README.md"
-license = { text = "MIT" }
+license = { file = "LICENSE" }
 authors = [
     { name="jetroni", email="jetronsaiti@gmail.com" },
     { name="FehmiHavziu", email="femi.havziu123@gmail.com" }
@@ -23,4 +23,4 @@ dependencies = [
 ]
 
 [project.scripts]
-viora = "viora.cli:app"
+tasklin = "tasklin.cli:app"

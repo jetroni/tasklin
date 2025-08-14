@@ -1,6 +1,6 @@
-# Viora
+# Tasklin
 
-Viora is a versatile Python CLI for leveraging multiple AI providers like OpenAI, Ollama, Anthropic (Claude), and more. It’s designed for developers and creators who want to integrate AI into their workflows, pipelines, or automation, without being limited to “chatting” with AI.
+Tasklin is a versatile Python CLI for leveraging multiple AI providers like OpenAI, Ollama, Anthropic (Claude), and more. It’s designed for developers and creators who want to integrate AI into their workflows, pipelines, or automation, without being limited to “chatting” with AI.
 
 Use it to generate text, process data, or build AI-driven scripts, all directly from your terminal.
 ---
@@ -12,7 +12,7 @@ Use it to generate text, process data, or build AI-driven scripts, all directly 
 * Returns structured responses with tokens used and execution time
 * Supports **sync** and **async** execution
 * Clean error handling for missing models, invalid API keys, etc.
-* Available on **PyPI** as `viora`
+* Available on **PyPI** as `tasklin`
 
 ---
 
@@ -21,8 +21,8 @@ Use it to generate text, process data, or build AI-driven scripts, all directly 
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/jetroni/viora.git
-cd viora
+git clone https://github.com/jetroni/tasklin.git
+cd tasklin
 python -m venv .venv
 source .venv/bin/activate   # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 Or install directly from PyPI:
 
 ```bash
-pip install viora
+pip install tasklin
 ```
 
 (Optional) Make the CLI globally executable:
@@ -47,19 +47,19 @@ pip install --editable .
 Basic usage:
 
 ```bash
-viora --type openai --prompt "Hello AI"
+tasklin --type openai --prompt "Hello AI"
 ```
 
 Run with async mode:
 
 ```bash
-viora --type openai --prompt "Hello AI" --async-mode
+tasklin --type openai --prompt "Hello AI" --async-mode
 ```
 
 Ollama example (with base URL):
 
 ```bash
-viora --type ollama --base-url http://localhost:11434 --model codellama --prompt "Hello"
+tasklin --type ollama --base-url http://localhost:11434 --model codellama --prompt "Hello"
 ```
 
 ---
@@ -114,10 +114,10 @@ MIT License. Free to use and modify.
 
 ## PyPI
 
-viora is published on PyPI. Install via:
+tasklin is published on PyPI. Install via:
 
 ```bash
-pip install viora
+pip install tasklin
 ```
 
-Stay up to date with the latest releases and check the package page: [https://pypi.org/project/viora/](https://pypi.org/project/viora/)
+Stay up to date with the latest releases and check the package page: [https://pypi.org/project/tasklin/](https://pypi.org/project/tasklin/)

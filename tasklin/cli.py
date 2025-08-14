@@ -10,8 +10,8 @@ app = typer.Typer()
 def version_callback(value: bool):
     if value:
         # Pull version from the installed package metadata
-        version = importlib.metadata.version("viora")
-        typer.echo(f"viora version: {version}")
+        version = importlib.metadata.version("tasklin")
+        typer.echo(f"tasklin version: {version}")
         raise typer.Exit()
 
 
