@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Tasklin"
+name = "tasklin"
 version = "0.0.1"
 description = "A single CLI to connect with OpenAI, Ollama, and more AI providers."
 readme = "README.md"

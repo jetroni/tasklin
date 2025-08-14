@@ -11,11 +11,30 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.9'
+
+    - name: Sync pyproject.toml version with tag
+      run: |
+        TAG_VERSION="${GITHUB_REF#refs/tags/}"
+        echo "Tag is $TAG_VERSION"
+        sed -i "/^\[project\]/,/^\[/{s/^version = \".*\"/version = \"$TAG_VERSION\"/}" pyproject.toml
+        echo "Updated pyproject.toml version:"
+        grep "^version =" pyproject.toml
+
+    - name: Commit version bump back to master
+      run: |
+        TAG_VERSION="${GITHUB_REF#refs/tags/}"
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add pyproject.toml
+        git commit -m "Bump version to ${TAG_VERSION}" || echo "No changes to commit"
+        git push origin HEAD:master
 
     - name: Install dependencies
       run: |
