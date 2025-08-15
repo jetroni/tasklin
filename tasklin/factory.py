@@ -8,7 +8,7 @@ PROVIDERS = {}
 
 def load_providers(user_providers_path=None):
     # Scan built-in providers
-    package = 'tasklin.providers'
+    package = "tasklin.providers"
     for _, name, _ in pkgutil.iter_modules([str(Path(__file__).parent / "providers")]):
         module = importlib.import_module(f"{package}.{name}")
         register_provider_from_module(module)
@@ -31,7 +31,11 @@ def load_providers(user_providers_path=None):
 def register_provider_from_module(module):
     for attr_name in dir(module):
         obj = getattr(module, attr_name)
-        if isinstance(obj, type) and issubclass(obj, AIProvider) and obj is not AIProvider:
+        if (
+            isinstance(obj, type)
+            and issubclass(obj, AIProvider)
+            and obj is not AIProvider
+        ):
             PROVIDERS[obj.name] = obj
 
 
