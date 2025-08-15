@@ -12,15 +12,12 @@ class DeepSeekProvider(AIProvider):
 
     def generate(self, prompt: str, **kwargs) -> AIResponse:
         start = time.time()
-        client = OpenAI(
-            api_key=self.api_key,
-            base_url=self.base_url
-        )
+        client = OpenAI(api_key=self.api_key, base_url=self.base_url)
 
         resp = client.chat.completions.create(
             model=self.model or "deepseek-chat",
             messages=[{"role": "user", "content": prompt}],
-            **kwargs
+            **kwargs,
         )
 
         output = resp.choices[0].message.content.strip()
@@ -34,5 +31,5 @@ class DeepSeekProvider(AIProvider):
             output=output,
             raw=raw_data,
             tokens_used=tokens,
-            duration_ms=duration
+            duration_ms=duration,
         )

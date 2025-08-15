@@ -12,7 +12,7 @@ class OpenAIProvider(AIProvider):
         client = OpenAI(api_key=self.api_key)
         resp = client.chat.completions.create(
             model=self.model or "gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}]
+            messages=[{"role": "user", "content": prompt}],
         )
 
         output = resp.choices[0].message.content.strip()
@@ -26,5 +26,5 @@ class OpenAIProvider(AIProvider):
             output=output,
             raw=raw_data,
             tokens_used=tokens,
-            duration_ms=duration
+            duration_ms=duration,
         )

@@ -9,8 +9,8 @@ description = "A single CLI to connect with OpenAI, Ollama, and more AI provider
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [
-    { name="jetroni", email="jetronsaiti@gmail.com" },
-    { name="FehmiHavziu", email="femi.havziu123@gmail.com" }
+    { name = "jetroni", email = "jetronsaiti@gmail.com" },
+    { name = "FehmiHavziu", email = "femi.havziu123@gmail.com" }
 ]
 requires-python = ">=3.8"
 dependencies = [
