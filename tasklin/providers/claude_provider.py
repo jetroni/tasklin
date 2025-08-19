@@ -11,14 +11,14 @@ class ClaudeProvider(AIProvider):
         start = time.time()
         client = Anthropic(api_key=self.api_key, base_url=self.base_url)
 
-        max_tokens = kwargs.get('max_tokens', 1024)
-        temperature = kwargs.get('temperature', None)
-        system = kwargs.get('system', None)
+        max_tokens = kwargs.get("max_tokens", 1024)
+        temperature = kwargs.get("temperature", None)
+        system = kwargs.get("system", None)
 
         request_params = {
             "model": self.model or "claude-3-5-sonnet-20241022",
             "max_tokens": max_tokens,
-            "messages": [{"role": "user", "content": prompt}]
+            "messages": [{"role": "user", "content": prompt}],
         }
 
         if temperature is not None:
@@ -42,5 +42,5 @@ class ClaudeProvider(AIProvider):
             output=output,
             raw=raw_data,
             tokens_used=tokens,
-            duration_ms=duration
+            duration_ms=duration,
         )

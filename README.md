@@ -1,18 +1,25 @@
 # Tasklin
 
-Tasklin is a versatile Python CLI for leveraging multiple AI providers like OpenAI, Ollama, Anthropic (Claude), and more. It’s designed for developers and creators who want to integrate AI into their workflows, pipelines, or automation, without being limited to “chatting” with AI.
+![PyPI](https://img.shields.io/pypi/v/tasklin)
+![Python Version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjetroni%2Ftasklin%2Frefs%2Fheads%2Fmaster%2Fpyproject.toml&query=%24.project.requires-python&label=python)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Build](https://img.shields.io/github/actions/workflow/status/jetroni/tasklin/publish.yml)
 
-Use it to generate text, process data, or build AI-driven scripts, all directly from your terminal.
+Tasklin is a Python CLI for integrating multiple AI providers into scripts, pipelines, or automation workflows. It’s built for developers who want structured AI outputs for tasks, processing, or data generation, without being limited to interactive chat.
+
+Website: [https://tasklin.dev](https://tasklin.dev)
+
 ---
 
 ## Features
 
-* Single CLI to interact with multiple AI providers
-* Supports **OpenAI**, **Ollama**, **Anthropic(Claude)**, **DeepSeek** and more in the future
-* Returns structured responses with tokens used and execution time
+* Single CLI for multiple AI providers
+* Supports **OpenAI**, **Ollama**, **Anthropic (Claude)**, **DeepSeek**, and more
+* Returns structured responses including tokens used and execution time
 * Supports **sync** and **async** execution
 * Clean error handling for missing models, invalid API keys, etc.
-* Available on **PyPI** as `tasklin`
+* Cross-platform
+* Installable from **PyPI** as `tasklin`
 
 ---
 
@@ -24,7 +31,7 @@ Clone the repo and install dependencies:
 git clone https://github.com/jetroni/tasklin.git
 cd tasklin
 python -m venv .venv
-source .venv/bin/activate   # On Windows: .venv\Scripts\activate
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -44,36 +51,32 @@ pip install --editable .
 
 ## Usage
 
-Basic usage:
+Basic example:
 
 ```bash
-tasklin --type openai --prompt "Hello AI"
+tasklin "Generate a report from this data" --type openai --key MY_KEY
 ```
 
-Run with async mode:
+Ollama example (self-hosted):
 
 ```bash
-tasklin --type openai --prompt "Hello AI" --async-mode
+tasklin "Run analysis" --type ollama --base-url http://localhost:11434 --model codellama
 ```
 
-Ollama example (with base URL):
-
-```bash
-tasklin --type ollama --base-url http://localhost:11434 --model codellama --prompt "Hello"
-```
+> ⚠️ Async mode is planned but not implemented yet.
 
 ---
 
 ## CLI Options
 
-| Option         | Description                                       |
-| -------------- | ------------------------------------------------- |
-| `--type`       | AI provider type (openai, ollama)                 |
-| `--prompt`     | Text prompt to send to the AI                     |
-| `--key`        | API key for providers that require authentication |
-| `--model`      | Model name to use (defaults vary per provider)    |
-| `--base-url`   | Base URL for self-hosted providers like Ollama    |
-| `--async-mode` | Run asynchronously (flag, no value needed)        |
+| Option         | Description                                    |
+|----------------|------------------------------------------------|
+| `--type`       | AI provider type (openai, ollama, etc.)        |
+| `--key`        | API key for authenticated providers            |
+| `--model`      | Model name (default varies per provider)       |
+| `--base-url`   | Base URL for self-hosted providers             |
+| `--async-mode` | Run asynchronously (flag, no value needed)     |
+| `"prompt"`     | Your actual input/prompt (positional argument) |
 
 ---
 
@@ -85,7 +88,7 @@ All responses are returned as a structured JSON object:
 {
   "provider": "openai",
   "model": "gpt-4o-mini",
-  "output": "Hello! How can I assist you today?",
+  "output": "Task output here",
   "raw": {...},
   "tokens_used": 17,
   "duration_ms": 543
@@ -96,28 +99,23 @@ All responses are returned as a structured JSON object:
 
 ## Contributing
 
-We welcome contributions!
+Contributions are welcome:
 
-* Add support for new AI providers
+* Add new AI providers
 * Improve error handling
 * Enhance async execution and CLI experience
 
-Please fork the repo and submit a pull request.
-
----
-
-## License
-
-MIT License. Free to use and modify.
+Fork the repo and submit a pull request.
 
 ---
 
 ## PyPI
 
-tasklin is published on PyPI. Install via:
+Install via:
 
 ```bash
 pip install tasklin
 ```
 
-Stay up to date with the latest releases and check the package page: [https://pypi.org/project/tasklin/](https://pypi.org/project/tasklin/)
+Latest releases: [https://pypi.org/project/tasklin/](https://pypi.org/project/tasklin/)
+
