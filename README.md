@@ -1,22 +1,31 @@
 # Tasklin
 
-Tasklin is a Python CLI for running multiple AI providers from one place. Use it to integrate AI into scripts,
-pipelines, or automation, without juggling SDKs, APIs, or different tools.
+![PyPI](https://img.shields.io/pypi/v/tasklin)
+![Python Version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjetroni%2Ftasklin%2Frefs%2Fheads%2Fmaster%2Fpyproject.toml&query=%24.project.requires-python&label=python)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Build](https://img.shields.io/github/actions/workflow/status/jetroni/tasklin/publish.yml)
+
+Tasklin is a Python CLI for integrating multiple AI providers into scripts, pipelines, or automation workflows. It’s built for developers who want structured AI outputs for tasks, processing, or data generation, without being limited to interactive chat.
+
+Website: [https://tasklin.dev](https://tasklin.dev)
 
 ---
 
-## What it does
+## Features
 
-- Single CLI for multiple AI providers: OpenAI, Ollama, Anthropic (Claude), DeepSeek, and more.
-- Returns structured JSON with output, tokens used, and execution time.
-- Handles missing models, invalid API keys, and other errors.
-- Lightweight and easy to integrate into workflows.
+* Single CLI for multiple AI providers
+* Supports **OpenAI**, **Ollama**, **Anthropic (Claude)**, **DeepSeek**, and more
+* Returns structured responses including tokens used and execution time
+* Supports **sync** and **async** execution
+* Clean error handling for missing models, invalid API keys, etc.
+* Cross-platform
+* Installable from **PyPI** as `tasklin`
 
 ---
 
-## Install
+## Installation
 
-Clone and set up:
+Clone the repo and install dependencies:
 
 ```bash
 git clone https://github.com/jetroni/tasklin.git
@@ -26,13 +35,13 @@ source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Or install from PyPI:
+Or install directly from PyPI:
 
 ```bash
 pip install tasklin
 ```
 
-(Optional) Make it globally executable:
+(Optional) Make the CLI globally executable:
 
 ```bash
 pip install --editable .
@@ -42,16 +51,16 @@ pip install --editable .
 
 ## Usage
 
-Pass your prompt as a positional argument:
+Basic example:
 
 ```bash
-tasklin --type openai --key MY_KEY "Process this data"
+tasklin "Generate a report from this data" --type openai --key MY_KEY
 ```
 
-Self-hosted Ollama example:
+Ollama example (self-hosted):
 
 ```bash
-tasklin --type ollama --base-url http://localhost:11434 --model codellama "Transform this input"
+tasklin "Run analysis" --type ollama --base-url http://localhost:11434 --model codellama
 ```
 
 > ⚠️ Async mode is planned but not implemented yet.
@@ -60,26 +69,27 @@ tasklin --type ollama --base-url http://localhost:11434 --model codellama "Trans
 
 ## CLI Options
 
-| Option       | Description                                    |
-|--------------|------------------------------------------------|
-| `--type`     | AI provider (openai, ollama, etc.)             |
-| `--key`      | API key if required                            |
-| `--model`    | Which model to use (provider-dependent)        |
-| `--base-url` | Base URL for self-hosted providers             |
-| `"prompt"`   | Your actual input/prompt (positional argument) |
+| Option         | Description                                    |
+|----------------|------------------------------------------------|
+| `--type`       | AI provider type (openai, ollama, etc.)        |
+| `--key`        | API key for authenticated providers            |
+| `--model`      | Model name (default varies per provider)       |
+| `--base-url`   | Base URL for self-hosted providers             |
+| `--async-mode` | Run asynchronously (flag, no value needed)     |
+| `"prompt"`     | Your actual input/prompt (positional argument) |
 
 ---
 
-## Example output
+## Response Structure
+
+All responses are returned as a structured JSON object:
 
 ```json
 {
   "provider": "openai",
   "model": "gpt-4o-mini",
-  "output": "Processed result here",
-  "raw": {
-    ...
-  },
+  "output": "Task output here",
+  "raw": {...},
   "tokens_used": 17,
   "duration_ms": 543
 }
@@ -89,21 +99,23 @@ tasklin --type ollama --base-url http://localhost:11434 --model codellama "Trans
 
 ## Contributing
 
-Want to help? Awesome! You can:
+Contributions are welcome:
 
-- Add new AI providers.
-- Improve error handling.
-- Tweak the CLI for your own needs.
+* Add new AI providers
+* Improve error handling
+* Enhance async execution and CLI experience
 
-Just fork the repo, make your changes, and open a PR — we’ll check it out. 😄
+Fork the repo and submit a pull request.
 
 ---
 
 ## PyPI
 
+Install via:
+
 ```bash
 pip install tasklin
 ```
 
-Check the latest releases: [https://pypi.org/project/tasklin/](https://pypi.org/project/tasklin/)
+Latest releases: [https://pypi.org/project/tasklin/](https://pypi.org/project/tasklin/)
 
